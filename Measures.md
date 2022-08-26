@@ -32,14 +32,25 @@ Calculate is one of the most important functions in DAX, due to its ability to a
  // This tell Power BI to filter on rows where the shot value is equal to 3
  // 
  ```
- <h3 style="color:#FF7F3F">Two ways of calculating 3 pts shots made</h3>
 
  ```js
  3PT FG MADE = CALCULATE(CurryShots[3PT FG ATTEMPTED],CurryShots[Outcome] = 1 )
  
  3PT FG MADE = CALCULATE(CurryShots[TOTAL FG MADE],CurryShots[Shot_Value] = 3 )
+ 
+ //Two ways of calculating 3 pts shots made
 
  ```
+
+ ```js
+Population = CALCULATE(SUM(Indicators[Value]), Indicators[Indicator] = "SP.POP.TOTL")
+
+GDP = CALCULATE(SUM(Indicators[Value]), Indicators[Indicator] = "NY.GDP.MKTP.CD")
+
+// We are saying only SUM this ammount when using the population indicator or GDP indicator
+ ```
+
+ 
 
 **Divide** example:
 
