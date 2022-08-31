@@ -1,12 +1,14 @@
-# Distinct Count, Calculate and Divide measure
+# Measures
+
+
+Structuring measures in a layered way makes it much easier to go back, troubleshoot, and fix when errors occur, especially across multiple measures.
+
+
+[Refrain from using inplict measures whenever possible(Expect in Key influencers visual and some other exceptions)](https://radacad.com/explicit-vs-implicit-dax-measures-in-power-bi)
 
 
 
 <h2>
-
-[Refrain from using inplict measures whenever possible](https://radacad.com/explicit-vs-implicit-dax-measures-in-power-bi)
-</h2>
-
 
 **Distinctcount** example:
 
@@ -145,9 +147,55 @@ CALCULATE (
 
 // We added the Measure [Dates With Transactions] to filter on rows that have transactions, we also gave the table that the transaction is in, cuz it is required in this DAX function 
 ```
+<h2>
+
+**SUMMARIZE** example:
+
+</h2>
+
+This function takes a given collumn, and groups its values toghether into a unique list
+
+ ```js
+Monthly Budget =
+SUMMARIZE('Date', 'Date'[YearMonth])
+
+---
+
+The result of this is another table where we have a single row per year per month (We used create table)
 
 
-<br><br><br>
+// the First Arg is the table we want to SUMMARIZE, the second arg is the one that we group by
+// This is offten used to aggregate data from calculated tables
+ 
+```
+Lets say you have a table with color and a table with ammout
+
+The SUMMARIZE Function will crunch the table until its one row per color, and we then we can sum the ammount for each color
+<br><br>
+
+<h2>
+
+**CROSSJOIN** example:
+
+</h2>
+
+It takes two tables and merges them Toghether, creating another Table that contains all possible combinations of all rows from the original two tables
+
+ ```js
+Monthly Budget =
+CROSSJOIN(SUMMARIZE('Date', 'Date'[YearMonth]),Budget)
+
+/// This will display one row, per year and month, and budget category
+```
+
+*Example* If we take a table of 4 rows and CROSSJOIN into another table containing 10 rows, the resulting table will be 40 rows, in math its known as Cartesian product
+
+<p align="center">
+  <img src="img/Cartesian%20product.png" style="invert:(100%)" />
+</p>
+
+
+<br><br>
     <h1>https://docs.microsoft.com/en-us/dax/format-function-dax</h1>
 
 <br>

@@ -48,3 +48,27 @@ CALCULATE (
 
 // Second arg(optional)"30/06" tell it wich day is the last day of the year (In case of june july fiscal years) 
 ```
+
+
+<h2>
+
+**SAMEPERIODLASTYEAR** example
+
+</h2>
+
+ ```js
+Expenses PY = 
+CALCULATE([Expenses], SAMEPERIODLASTYEAR('Date'[Date]))
+
+//! Delcare the TABLE With single Quotes
+// Reserve the double quotes for strings
+```
+
+<h3>
+
+***Problem***, our budget does not span the entire years and months of our data model, its just being considered as a fixed value
+</h3>
+
+> Lets start by adding a year-month Calculated-collumn
+>
+>Format('Date'[date], "YYYY-MM")

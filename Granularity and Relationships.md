@@ -44,3 +44,21 @@
 > The many to one is the inverse, where both collumns contain unique values
 
 > Many to Many is a more advanced Technique in wich the two table may have the same or diffrent Granularity but both collumns in the relationship can contain duplicate values, this is usually reversed for complex modeling scenarions
+
+
+<h3>Inactive relationships</h3>
+
+>In case Power BI shows us a dotted line, it tells us that its an inactive relationship
+> 
+> We can still use this relation ship in Dax
+> 
+ ```js
+ Budget amt =
+ CALCULATE(
+    SUM('Monthly Budget'[Budget]),
+    USERELATIONSHIP('Date'[YearMonth],'Monthly Budget'[YearMonth])
+ )
+
+ Syntax
+ USERELATIONSHIP(<columnName1>,<columnName2>)  
+```

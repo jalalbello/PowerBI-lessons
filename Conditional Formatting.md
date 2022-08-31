@@ -34,5 +34,15 @@ Works Like conditional collumns
 
 In case our fields contained colors (Hex Colors)
 
+<br></br>
+
+<h2>Color if greater than</h2>
+
+<p align="center">
+  <img src="img/greater_than.png" style="width:100%;" />
+</p>
+
+In our Format Visual settings, we added a conditional color red for when the expense exceeds our monthly budget  
+
 
 
